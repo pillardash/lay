@@ -6,4 +6,4 @@ include_once __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." .
 
 Domain::new()->index("api-endpoint");
 
-include_once __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "index.php";
+include_once \BrickLayer\Lay\Core\LayConfig::server_data()->web . "index.php";

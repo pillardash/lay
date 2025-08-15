@@ -7,7 +7,7 @@ use BrickLayer\Lay\Core\View\ViewCast;
 
 class Plaster extends ViewCast
 {
-    public function init_pages(): void
+    protected function init_pages(): void
     {
         $this->builder->init_start()
             ->body_attr("dark", 'id="body-id"')
@@ -16,7 +16,7 @@ class Plaster extends ViewCast
         ->init_end();
     }
 
-    public function pages(): void
+    protected function pages(): void
     {
         $this->route("index")->bind(function (ViewBuilder $builder) {
             $builder->page("title", "Homepage")

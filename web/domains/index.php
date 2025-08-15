@@ -1,3 +1,3 @@
 <?php
 
-header("location: ../" . @$_GET['brick']);
+include_once __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "index.php";

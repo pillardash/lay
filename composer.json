@@ -1,5 +1,5 @@
 {
-  "name": "bricklayer/lay",
+  "name": "pillardash/lay",
   "description": "A lite PHP builder meta-framework to get your projects up and running quickly",
   "keywords": ["bricklayer", "lay", "php bricklayer", "lite php framework", "metaframework", "fast php framework"],
   "type": "library",
@@ -16,7 +16,7 @@
 
   "scripts": {
     "post-autoload-dump": [
-      "@php bob project:create --refresh-links"
+      "@php bob project:create"
     ],
 
     "post-create-project-cmd": [
@@ -26,7 +26,7 @@
 
   "require": {
     "php": ">8.1",
-    "bricklayer/structure": "*"
+    "pillardash/lay-core": "*"
   },
 
   "minimum-stability" : "stable",
