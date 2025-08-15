@@ -41,7 +41,7 @@ LayConfig::set_cors(
 
 ///// Project Configuration
 
-$site_name = "Sample Lay Project";
+$site_name = "Lay by PillarDash";
 
 LayConfig::new()
 
@@ -55,7 +55,7 @@ LayConfig::new()
     ->init_mail("EMAIL-1", "EMAIL-2")
     ->init_tel("TEL-1", "TEL-2")
     ->init_author("PHP BrickLayer - Lay")
-    ->init_copyright("&copy; " . date('Y') . "; All rights reserved <a href='https://lay.osaitech.dev'>PHP Bricklayer - Lay</a>")
+    ->init_copyright("&copy; " . date('Y') . "; All rights reserved <a href='https://www.pillardash.com/apps/lay'>PillarDash</a>")
 
     // Store non-sensitive data ands access it anywhere in the project by calling the `LayConfig::site_data()->others` method.
     // If you have a value that persists both on local environment and production, use this
@@ -63,7 +63,7 @@ LayConfig::new()
         "desc" => (
             "This is an awesome project that is about to unfold you just watch and see 😉."
         ),
-        "bucket_domain" => "https://bucket.lay.osaitech.dev/"
+        "bucket_domain" => "https://bucket.pillardash.com/"
     ])
     ->init_orm(false)
 ->init_end();
