@@ -4,7 +4,7 @@ use BrickLayer\Lay\Core\View\DomainResource;
 
 $res = DomainResource::get();
 
-$site_name = \BrickLayer\Lay\Core\LayConfig::site_data()->name->short;
+$site_name = \BrickLayer\Lay\Core\App::new()->name['short'];
 
 DomainResource::set_res(
     "copyright",

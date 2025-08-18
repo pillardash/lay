@@ -2,7 +2,7 @@
 
 namespace Bricks\Business\Controller;
 
-use BrickLayer\Lay\Core\LayConfig;
+use BrickLayer\Lay\Core\App;
 use BrickLayer\Lay\Libs\Primitives\Traits\ControllerHelper;
 use BrickLayer\Lay\Libs\Primitives\Traits\IsSingleton;
 use BrickLayer\Lay\Libs\LayDate;
@@ -86,7 +86,7 @@ class Prospects
             ->body($message)
             ->client($request->email, $request->name)
             ->server(
-                LayConfig::site_data()->mail->{0},
+                App::new()->mail[0],
                 "LayMailer"
             )
             ->to_server();

@@ -17,13 +17,14 @@ use BrickLayer\Lay\Libs\Primitives\Abstracts\RequestHelper;
  * @property string|null updated_by
  * @property int|null updated_at
  */
-class NewsletterSub extends BaseModelHelper {
+class NewsletterSub extends BaseModelHelper
+{
 
     public static string $table = "newsletter_subs";
 
-    protected function props_schema(array &$props): void
+    protected function cast_schema(): void
     {
-        $this->parse_prop("options", "array");
+        $this->cast("options", "array");
     }
 
     public function is_duplicate(array|RequestHelper $columns) : bool
