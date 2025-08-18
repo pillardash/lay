@@ -37,9 +37,9 @@ class Prospect extends BaseModelHelper
         return $this->exists();
     }
 
-    protected function props_schema(array &$props): void
+    protected function cast_schema(): void
     {
-        $this->parse_prop("body", "array");
+        $this->cast("body", "array");
     }
 
     public function created_by() : ?string

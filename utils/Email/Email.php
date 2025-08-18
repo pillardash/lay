@@ -1,9 +1,8 @@
 <?php
 
-
 namespace Utils\Email;
 
-use BrickLayer\Lay\Core\LayConfig;
+use BrickLayer\Lay\Core\App;
 use BrickLayer\Lay\Core\View\DomainResource;
 use BrickLayer\Lay\Libs\Mail\Mailer;
 
@@ -11,7 +10,8 @@ class Email extends Mailer
 {
     public static function email_btn(string $link, string $text): string
     {
-        $color = LayConfig::site_data()->color->pry;
+        $color = App::new()->color['pry'];
+
         return <<<BTN
             <span style="display: block; width: 100%; margin: 10px 0">
                 <a style="
@@ -28,14 +28,14 @@ class Email extends Mailer
                 " href="$link">$text</a>
             </span>
         BTN;
-
     }
 
-    public function email_template(string $message) : string {
-        $data = LayConfig::site_data();
+    public function email_template(string $message) : string
+    {
+        $data = App::new();
         $domain_res = DomainResource::get();
         $logo = $domain_res->shared->img_default->logo;
-        $company_name = $data->name->short;
+        $company_name = $data->name['short'];
         $copyright = $domain_res->copyright ?? $data->copy;
         $text_color = "#000000";
         $bg_color = "transparent";
@@ -60,11 +60,13 @@ class Email extends Mailer
 
     public function welcome_newsletter(array $data): ?bool
     {
-        $site = LayConfig::site_data();
-        $company = $site->name->short;
-        $contact = $site->mail->{0};
-        $admin_name = $site->others->default_personnel['name'];
-        $admin_post = $site->others->default_personnel['post'];
+        $site = App::new();
+
+        $company = $site->name['short'];
+        $contact = $site->mail[0];
+
+        $admin_name = $site->globals()['default_personnel']['name'];
+        $admin_post = $site->globals()['default_personnel']['post'];
 
         return $this
             ->subject("Welcome to $company Newsletter!")
@@ -105,9 +107,7 @@ class Email extends Mailer
                     $admin_post<br>
                     $company               
                 </p>
-            MSG
-            )
-            ->to_client();
+            MSG)->to_client();
     }
 
 
