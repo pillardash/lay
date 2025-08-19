@@ -12,12 +12,12 @@ $sess = [
 //    "only_cookies" => true,
     "secure" => true,
     "samesite" => 'None',
+    "domain" => App::new()->domain_no_proto
 ];
 
 if(App::is_prod()) {
     $sess['lifetime'] = 0;
     $sess['path'] = "/";
-    $sess['domain'] = "localhost";
 }
 
 Startup::session($sess);
@@ -25,7 +25,7 @@ Startup::session($sess);
 Startup::cors(
 // Specify where to allow requests from
     allowed_origins: [
-        "http://localhost",
+        App::new()->domain,
     ],
 
     // Allow requests from all origins
@@ -42,7 +42,7 @@ Startup::cors(
 
 ///// Project Configuration
 
-$site_name = "Sample Lay Project";
+$site_name = "Lay by PillarDash";
 
 Startup::new()
     ->name($site_name, "$site_name | Slogan Goes Here")
