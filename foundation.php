@@ -52,8 +52,8 @@ Startup::new()
     ->author("Lay by PillarDash")
     ->copyright("&copy; " . date('Y') . "; All rights reserved <a href='https://lay.pillardash.com'>Lay - By PillarDash</a>")
 
-    // If you don't want your app to connect to the database by default; then remove the next line
-    ->connect_db()
+    // If you want your app to connect to the database by default; Uncomment the next line
+    // ->connect_db()
 
     // Store non-sensitive data ands access it anywhere in the project by calling the `App::globals()->desc` method.
     // If you have a value that persists both on local environment and production, use this
