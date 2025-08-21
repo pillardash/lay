@@ -1,4 +1,4 @@
-# ![Lay Framework](https://github.com/pillardash/lay-core/blob/stable/src/static/img/lay-logo-github.png)
+# ![Lay Framework](https://raw.githubusercontent.com/pillardash/lay-core/refs/heads/stable/src/static/img/logo.png)
 
 **Lay** - A Lite PHP Meta-Framework for Rapid Development
 
