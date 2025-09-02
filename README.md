@@ -1,4 +1,4 @@
-# ![Lay Framework](https://github.com/pillardash/lay-core/blob/stable/src/static/img/lay-logo-github.png)
+# ![Lay Framework](https://raw.githubusercontent.com/pillardash/lay-core/refs/heads/stable/src/static/img/logo.png)
 
 **Lay** - A Lite PHP Meta-Framework for Rapid Development
 
@@ -76,7 +76,27 @@ my-project/
 ├── web/                    # Web layer
 │   ├── domains/           # Domain-specific code
 │   │   ├── Api/           # API domain
-│   │   └── Default/       # Default web domain
+│   │   │   ├── Plaster.php    # API configuration and hooks
+│   │   │   └── index.php      # API entry point
+│   │   └── Default/       # Default web domain (template for all regular domains)
+│   │       ├── Plaster.php    # Domain routes and page configuration
+│   │       ├── foundation.php # Domain-specific setup
+│   │       ├── layout/        # HTML layout components
+│   │       │   ├── head.inc   # <head> section (meta, CSS, etc.)
+│   │       │   ├── body.inc   # Main body wrapper
+│   │       │   └── script.inc # JavaScript includes
+│   │       ├── plaster/       # View templates
+│   │       │   ├── homepage.view   # Homepage template
+│   │       │   └── another.view    # Example page template
+│   │       └── public/        # Domain-specific public assets
+│   │           ├── index.php      # Domain entry point
+│   │           ├── favicon.ico    # Domain favicon
+│   │           └── static/        # Static assets (CSS, JS, images)
+│   │               └── dev/       # Development assets
+│   │                   ├── css/   # Stylesheets
+│   │                   ├── js/    # JavaScript files
+│   │                   ├── images/ # Images
+│   │                   └── ui/    # UI components
 │   └── shared/            # Shared assets and resources
 ├── foundation.php         # Application bootstrap
 ├── index.php             # Application entry point
@@ -105,6 +125,38 @@ Domain::new()->create(
 );
 ````
 
+### Domain Structure
+
+Each regular domain follows a standard structure (using `Default` as an example):
+
+```
+web/domains/Default/
+├── Plaster.php           # Main domain controller - defines routes and pages
+├── foundation.php        # Domain-specific configuration and setup
+├── layout/              # HTML layout components
+│   ├── head.inc         # <head> section - meta tags, CSS includes
+│   ├── body.inc         # Main body wrapper and footer
+│   └── script.inc       # JavaScript includes and initialization
+├── plaster/             # View templates (your actual page content)
+│   ├── homepage.view    # Homepage template
+│   └── another.view     # Additional page templates
+└── public/              # Domain-specific public assets
+    ├── index.php        # Domain entry point for direct access
+    ├── favicon.ico      # Domain-specific favicon
+    └── static/          # Static assets organized by environment
+        └── dev/         # Development assets
+            ├── css/     # Domain stylesheets
+            ├── js/      # Domain JavaScript
+            ├── images/  # Domain images
+            └── ui/      # UI components and assets
+```
+
+**Key Files Explained:**
+
+- **`Plaster.php`** - Your domain's main controller where you define routes and configure pages
+- **`layout/*.inc`** - Reusable HTML components that wrap your content
+- **`plaster/*.view`** - Your actual page templates with content
+- **`public/static/`** - All your CSS, JavaScript, images, and other assets
 
 ### Controllers
 
@@ -190,8 +242,7 @@ $id('my-element').innerHTML = 'Hello World';
 $sel('.my-class').$class('add', 'active');
 
 // AJAX made simple
-$ajax({
-    url: $lay.src.api + 'subscribe-newsletter',
+$ajax($lay.src.api + 'subscribe-newsletter', {
     method: 'POST',
     data: { email: 'user@example.com' },
 }).then(response => {
@@ -202,7 +253,7 @@ $ajax({
 
 ## 🗄️ Database Integration
 
-Enable database connection in your `foundation.php`:
+Lay can startup without connecting to the database by default, but if you want that, you can use the `->connect_db()` method in your `foundation.php`:
 
 ````php
 Startup::new()
