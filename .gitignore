@@ -37,3 +37,7 @@ coverage
 *.sln
 *.sw?
 
+# LSP
+.php-cs-fixer.cache
+.php-cs-fixer.dist.php
+
